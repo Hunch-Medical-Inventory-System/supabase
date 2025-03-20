@@ -5,6 +5,7 @@
 // Setup type definitions for built-in Supabase Runtime APIs
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { getInventoryInformation } from "./llm.ts";
+import type { Chat } from "./types/chatbot.ts";
 
 console.log("Hello from Functions!");
 
@@ -44,7 +45,7 @@ Deno.serve(async (req) => {
       );
     }
 
-    const data = {
+    const data: { message: Chat } = {
       message: await getInventoryInformation(question),
     };
 
