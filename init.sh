@@ -25,8 +25,13 @@ echo "✅ All required tools are installed."
 echo "📦 Installing Supabase CLI locally..."
 npm install -D supabase
 
+
 echo "⚙️ Initializing Supabase project (if not already initialized)..."
-npx supabase init
+if [ ! -d "./supabase" ]; then
+  npx supabase init
+else
+  echo "📁 Supabase project already initialized."
+fi
 
 echo "🚀 Starting Supabase local development environment (Docker)..."
 npx supabase start
